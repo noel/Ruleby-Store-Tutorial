@@ -7,6 +7,11 @@
   <%= number_to_currency @product.price %>
 </p>
 
+<p>
+  Discount:
+  <%= number_to_percentage @product.discount,:precision => 0 %>
+</p>
+
 <% unless @product.category.nil? %>
 <p>
   <strong>Category:</strong>

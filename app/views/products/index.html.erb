@@ -6,6 +6,11 @@
       <%= link_to h(product.name), product %>
       <%= number_to_currency(product.price) %>
     </h3>
+    <% if product.discount.present? %>
+      <span class="discount">
+        <%= "Discount " + number_to_percentage(product.discount, :precision => 0 ) %>
+      </span>
+    <% end %>
     <div class="actions">
       <%= link_to "Edit", edit_product_path(product) %> |
       <%= link_to "Destroy", product, :confirm => 'Are you sure?', :method => :delete %>
