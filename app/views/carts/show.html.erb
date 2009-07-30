@@ -1,0 +1,27 @@
+<% title 'Cart' %>
+<ol>
+	<% total = 0 %>
+<% @cart.each do |product| %>
+	<ul>
+		<%= simple_format h(product.description) %>
+
+		<p>
+	  	<strong>Price:</strong>
+	  	<%= number_to_currency product.price %>
+		</p>
+
+		<p>
+	  	Discount:
+	  	<%= number_to_percentage product.discount,:precision => 0 %>
+		</p>
+	</ul>
+	<% total += product.price - (product.price * product.discount / 100) %>
+<% end %>
+</ol>
+<p>
+	Total:
+	<%= number_to_currency total %>
+<%= form_tag '/carts/checkout' %>
+	<%= submit_tag 'Checkout' %>
+</form>
+</p>
