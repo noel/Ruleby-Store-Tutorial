@@ -9,12 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090722002500) do
+ActiveRecord::Schema.define(:version => 20090729094912) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders_products", :id => false, :force => true do |t|
+    t.integer "orders_id"
+    t.integer "products_id"
   end
 
   create_table "products", :force => true do |t|
@@ -26,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20090722002500) do
     t.datetime "updated_at"
     t.decimal  "discount"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "username"
