@@ -1,0 +1,20 @@
+<tr>
+	<td>
+		<%= line.product.name %>
+	</td>
+	<td class="center">
+		<%= number_to_currency line.product.price %>
+	</td>
+	<td class="center">
+		<%= line.quantity %>
+	</td>
+	<td class="center">
+		<%= number_to_currency line.line_price %>
+	</td>
+	<td class="center">
+		<%= number_to_percentage line.product.discount, :precision => 0 %>
+	</td>
+	<td class="right">
+		<%= number_to_currency line.discounted_price %>
+	</td>
+</tr>
