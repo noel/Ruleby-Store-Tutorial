@@ -8,8 +8,8 @@ class CartsController < ApplicationController
 
       engine :engine do |e|
         r = StoreRulebook.new(e)
-        r.rules
-        r.discount_products ['X', 'Y', 'Z']
+        r.customer_discounts
+        r.product_discounts ['X', 'Y', 'Z']
         
         e.assert current_user
         e.assert @product

@@ -2,7 +2,7 @@ require 'ruleby'
 
 class StoreRulebook < Ruleby::Rulebook
   
-  def rules    
+  def customer_discounts    
     # New customers get 10% discount     
     rule :newCustomerDiscount, [User, :u, m.order_count(&c{|c| c==0 or c==nil})], [Product, :p] do |v|
       if v[:p].discount
@@ -22,7 +22,7 @@ class StoreRulebook < Ruleby::Rulebook
     end
   end
   
-  def discount_products(discounted_products=[])
+  def product_discounts(discounted_products=[])
     # Customers who buy Product X, Y or Z get a 15% discount on that product 
     discounted_products.each do |product_name|
       rule_name = "fifteenPercentOffSale_#{product_name}"
