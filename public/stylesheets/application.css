@@ -97,6 +97,28 @@ h3 {
   float: right;
 }
 
+td,th{
+  padding: 0 15px;
+}
+
+td#total{
+  border-top: 2px solid #999;
+}
+
+.center{
+  text-align: center;
+}
+
+.right{
+  text-align: right;
+}
+#cart{
+  padding-left: 20px;
+  background-image: url("/images/cart.png");
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
 span.discount{
   font-weight: bold;
   color: #008000;

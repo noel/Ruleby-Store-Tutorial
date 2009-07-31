@@ -7,6 +7,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
+  map.resource :cart
+  map.checkout "checkout", :controller => "carts", :action => "checkout"
+  map.update "update", :controller => "carts", :action => "update", :method => "post"
+
+
   map.resources :products
   map.resources :categories
   map.root :products

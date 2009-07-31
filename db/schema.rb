@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20090729094912) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "discount"
+    t.decimal  "discount",    :default => 0.0
   end
 
   create_table "sessions", :force => true do |t|
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20090729094912) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.integer  "order_count"
+    t.integer  "order_count",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,27 +1,61 @@
 <% title 'Cart' %>
-<ol>
-	<% total = 0 %>
-<% @cart.each do |product| %>
-	<ul>
-		<%= simple_format h(product.description) %>
 
-		<p>
-	  	<strong>Price:</strong>
-	  	<%= number_to_currency product.price %>
-		</p>
+<table>
+	<thead>
+		<tr>
+			<th>
+				Item
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Quantity
+			</th>
+			<th>
+				Line Total
+			</th>
+			<th>
+				Discount
+			</th>
+			<th class="right">
+			</th>	
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial=>"line", :collection => @cart.items %>
+		<tr>
+			<td colspan="5">
+			<td id="total" class="right">
+				Sub Total:
+				<%= number_to_currency @cart.cart_sub_total %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+			<td class="right">
+					Discount Amount:
+					<%= number_to_percentage @cart.order_discount, :precision => 0 %>
+			</td>
+			<td class="right">
+					<%= number_to_currency @cart.cart_discount %>
+			</td>
+		</tr>		
+		<tr>
+			<td colspan="5">
+			<td id="total" class="right">
+				<strong>
+					Total:
+					<%= number_to_currency @cart.cart_total %>
+				<strong>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
-		<p>
-	  	Discount:
-	  	<%= number_to_percentage product.discount,:precision => 0 %>
-		</p>
-	</ul>
-	<% total += product.price - (product.price * product.discount / 100) %>
-<% end %>
-</ol>
-<p>
-	Total:
-	<%= number_to_currency total %>
-<%= form_tag '/carts/checkout' %>
+<%= form_tag checkout_path %>
 	<%= submit_tag 'Checkout' %>
 </form>
-</p>
+
+
+
