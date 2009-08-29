@@ -8,7 +8,7 @@ class CartsController < ApplicationController
 
     #ruleby code     
     engine :engine do |e|
-      r = StoreRulebook.new(e)
+      r = CartRulebook.new(e)
       r.customer_discounts
       r.product_discounts ['X', 'Y', 'Z']
       

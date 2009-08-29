@@ -1,6 +1,6 @@
 require 'ruleby'
 
-class StoreRulebook < Ruleby::Rulebook
+class CartRulebook < Ruleby::Rulebook
   
   def customer_discounts    
     # New customers get 10% discount     
